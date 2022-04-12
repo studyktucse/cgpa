@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#maincgpa{width:1100px;height:550px;background-color:#fdfdfc;border-radius:50px;margin-left:130px;margin-top:20px;overflow:hidden;box-shadow: 2px 4px 4px 2px rgba(0, 0, 0, 0.2), 2px 6px 6px 2px rgba(0, 0, 0,0.15);postion:fixed;user-select:none;}
+#cgtitle{text-align:left;font-size:33px;}
+#sgpasubmit{width:820px;margin-top:20px;margin-left:80px;}
+#pageforward{margin-left:950px;display:inline-block;position:fixed;margin-top:150px;background-image:url("buttonforward.jpg");width:50px;height:50px;background-repeat:no-repeat;text-align:center;}
+#pagebackward{margin-left:0px;display:inline-block;position:fixed;width:50px;height:50px;margin-top:150px;background-repeat:no-repeat;background-image:url("buttonbackward.jpg");text-align:center;}
+#cgtablecontainer1{margin-left:50px;margin-top:60px;width:1000px;position:fixed;overflow:hidden;}
+#cgtable{border-collapse:seperate;padding-left:150px;}
+#subname{width:300px;height40px;text-align:left;}
+#gradedisplay1{width:60px;height:40px;border:1px solid black; border-radius:5px;}
+#gradedisplay2{width:60px;height:40px;border:1px solid black; border-radius:5px;}
+#gradedisplay3{width:60px;height:40px;border:1px solid black; border-radius:5px;}
+#gradedisplay4{width:60px;height:40px;border:1px solid black; border-radius:5px;}
+#gradedisplay5{width:60px;height:40px;border:1px solid black; border-radius:5px;}
+#gradedisplay6{width:60px;height:40px;border:1px solid black; border-radius:5px;}
+#butopen{width:40px;height:40px;background-color:black;color:white;border-radius:5px;background-image:url("buttonopen.gif");background-repeat:no-repeat;}
+#butclose{width:40px;height:40px;background-color:black;color:white;border-radius:5px;background-image:url("buttonclose.gif");background-repeat:no-repeat;}
+#butp{width:40px;height:40px;background-color:black;color:white;border-radius:5px;}
+#butc{width:40px;height:40px;background-color:black;color:white;border-radius:5px;}
+#butb{width:40px;height:40px;background-color:black;color:white;border-radius:5px;}
+#butbp{width:40px;height:40px;background-color:black;color:white;border-radius:5px;}
+#buta{width:40px;height:40px;background-color:black;color:white;border-radius:5px;}
+#butap{width:40px;height:40px;background-color:black;color:white;border-radius:5px;}
+#buto{width:40px;height:40px;background-color:black;color:white;border-radius:5px;}
+#buttoncontainer1{width:0px;overflow:hidden;transition: 0.5s;}
+#buttoncontainer2{width:0px;overflow:hidden;transition: 0.5s;}
+#buttoncontainer3{width:0px;overflow:hidden;transition: 0.5s;}
+#buttoncontainer4{width:0px;overflow:hidden;transition: 0.5s;}
+#buttoncontainer5{width:0px;overflow:hidden;transition: 0.5s;}
+#buttoncontainer6{width:0px;overflow:hidden;transition: 0.5s;}
+#sresult{margin-top:490px;font-size:13px;height:20px;position:fixed;padding-left:50px;}
+#sem1result{width:120px;}
+#sem2result{width:120px;}
+#sem3result{width:120px;}
+#sem4result{width:120px;}
+#sem5result{width:120px;}
+#sem6result{width:120px;}
+#sem7result{width:120px;}
+#sem8result{width:120px;}
+
+
+</style>
+</head>
+<body style="background-color:#e9f2f2;width:100%;position:fixed;">
+<div id="maincgpa">
+<img style="margin-left:50px;position:fixed;padding-top:35px;" src="cgpatit.jpg">
+
+
+<div id="cgtablecontainer1"><!-------------------------cgtablecontaner starts------------------------------>
+<div><h3>CGPA CALCULATOR</h3><p>To calculate CGPA you have to calculate sgpa first!!!</p></div>
+<div style="font-size:30px;margin-left:300px;margin-top:90px;" onclick="s1cgpapage()">CLICK HERE TO START</div>
+
+</div><!-------------------------cgtablecontaner ends------------------------------>
+
+<table id="sresult"><tr><th id="sem1result">SGPA<br>SEM1:waiting..</th><th id="sem2result">SGPA<br>SEM2:waiting..</th><th id="sem3result">SGPA<br>SEM3:waiting..</th><th id="sem4result">SGPA<br>SEM4:waiting..</th><th id="sem5result">SGPA<br>SEM5:waiting..</th><th id="sem6result">SGPA<br>SEM6:waiting..</th><th id="sem7result">SGPA<br>SEM7:waiting..</th><th id="sem8result">SGPA<br>SEM8:waiting..</th></tr></table>
+
+
+
+<script>
+var grade1=0;
+var grade2=0;
+var grade3=0;
+var grade4=0;
+var grade5=0;
+var grade6=0;
+var x;
+var sgpsemr1=0;
+var sgpsemr2=0;
+var sgpsemr3=0;
+var sgpsemr4=0;
+var sgpsemr5=0;
+var sgpsemr6=0;
+var sgpsemr7=0;
+var sgpsemr8=0;
+var cgpaall=0;
+
+
+
+function s1cgpapage(){grade1=0;grade2=0;grade3=0;grade4=0;grade5=0;grade6=0;
+document.getElementById("cgtablecontainer1").innerHTML="<div id='cgtitle'>SGPA SEMESTER1</div><hr><div id='pageforward' onclick='s2cgpapage()'>S2</div><table id='cgtable'><tr><th id='subname'>subjectname</th><th id='gradedisplay1'></th><th id='butopen' onclick='openbut1()'></th><th><div id='buttoncontainer1'><table id='buttons'><tr><th id='butp' onclick='sub1(this.id)'>P</th><th id='butc' onclick='sub1(this.id)'>C</th><th id='butb' onclick='sub1(this.id)'>B</th><th id='butbp' onclick='sub1(this.id)'>B+</th><th id='buta'onclick='sub1(this.id)'>A</th><th id='butap' onclick='sub1(this.id)'>A+</th><th id='buto' onclick='sub1(this.id)'>O</th><th id='butclose' onclick='buttonclose1()'></th></tr></table></div></th></tr><tr><th id='subname'>subjectname</th><th id='gradedisplay2'></th><th id='butopen' onclick='openbut2()'></th><th><div id='buttoncontainer2'><table id='buttons'><tr><th id='butp' onclick='sub2(this.id)'>P</th><th id='butc' onclick='sub2(this.id)'>C</th><th id='butb' onclick='sub2(this.id)'>B</th><th id='butbp' onclick='sub2(this.id)'>B+</th><th id='buta' onclick='sub2(this.id)'>A</th><th id='butap' onclick='sub2(this.id)'>A+</th><th id='buto' onclick='sub2(this.id)'>O</th><th id='butclose' onclick='buttonclose2()'></th></tr></table></div></th></tr><tr><th id='subname'>subjectname</th><th id='gradedisplay3'></th><th id='butopen' onclick='openbut3()'></th><th><div id='buttoncontainer3'><table id='buttons'><tr><th id='butp' onclick='sub3(this.id)'>P</th><th id='butc' onclick='sub3(this.id)'>C</th><th id='butb' onclick='sub3(this.id)'>B</th><th id='butbp' onclick='sub3(this.id)'>B+</th><th id='buta' onclick='sub3(this.id)'>A</th><th id='butap' onclick='sub3(this.id)'>A+</th><th id='buto' onclick='sub3(this.id)'>O</th><th id='butclose' onclick='buttonclose3()'></th></tr></table></div></th></tr><th id='subname'>subjectname</th><th id='gradedisplay4'></th><th id='butopen' onclick='openbut4()'></th><th><div id='buttoncontainer4'><table id='buttons'><tr><th id='butp' onclick='sub4(this.id)'>P</th><th id='butc' onclick='sub4(this.id)'>C</th><th id='butb' onclick='sub4(this.id)'>B</th><th id='butbp' onclick='sub4(this.id)'>B+</th><th id='buta' onclick='sub4(this.id)'>A</th><th id='butap' onclick='sub4(this.id)'>A+</th><th id='buto' onclick='sub4(this.id)'>O</th><th id='butclose' onclick='buttonclose4()'></th></tr></table></div></th></tr><th id='subname'>subjectname</th><th id='gradedisplay5'></th><th id='butopen' onclick='openbut5()'></th><th><div id='buttoncontainer5'><table id='buttons'><tr><th id='butp' onclick='sub5(this.id)'>P</th><th id='butc' onclick='sub5(this.id)'>C</th><th id='butb' onclick='sub5(this.id)'>B</th><th id='butbp' onclick='sub5(this.id)'>B+</th><th id='buta' onclick='sub5(this.id)'>A</th><th id='butap' onclick='sub5(this.id)'>A+</th><th id='buto' onclick='sub5(this.id)'>O</th><th id='butclose' onclick='buttonclose5()'></th></tr></table></div></th></tr><th id='subname'>subjectname</th><th id='gradedisplay6'></th><th id='butopen' onclick='openbut6()'></th><th><div id='buttoncontainer6'><table id='buttons'><tr><th id='butp' onclick='sub6(this.id)'>P</th><th id='butc' onclick='sub6(this.id)'>C</th><th id='butb' onclick='sub6(this.id)'>B</th><th id='butbp' onclick='sub6(this.id)'>B+</th><th id='buta' onclick='sub6(this.id)'>A</th><th id='butap' onclick='sub6(this.id)'>A+</th><th id='buto' onclick='sub6(this.id)'>O</th><th id='butclose' onclick='buttonclose6()'></th></tr></table></div></th></tr></table><table id='sgpasubmit'><tr><th onclick='sgpas1()'>SUBMIT</th><hr></tr></table>";}
+
+
+
+
+
+
+function s2cgpapage(){grade1=0;grade2=0;grade3=0;grade4=0;grade5=0;grade6=0;
+document.getElementById("cgtablecontainer1").innerHTML="<div id='cgtitle'>SGPA SEMESTER2</div><hr><div id='pagebackward' onclick='s1cgpapage()'>S1</div> <div id='pageforward' onclick='s3cgpapage()'>S3</div><table id='cgtable'><tr><th id='subname'>subjectname</th><th id='gradedisplay1'></th><th id='butopen' onclick='openbut1()'></th><th><div id='buttoncontainer1'><table id='buttons'><tr><th id='butp' onclick='sub1(this.id)'>P</th><th id='butc' onclick='sub1(this.id)'>C</th><th id='butb' onclick='sub1(this.id)'>B</th><th id='butbp' onclick='sub1(this.id)'>B+</th><th id='buta'onclick='sub1(this.id)'>A</th><th id='butap' onclick='sub1(this.id)'>A+</th><th id='buto' onclick='sub1(this.id)'>O</th><th id='butclose' onclick='buttonclose1()'></th></tr></table></div></th></tr><tr><th id='subname'>subjectname</th><th id='gradedisplay2'></th><th id='butopen' onclick='openbut2()'></th><th><div id='buttoncontainer2'><table id='buttons'><tr><th id='butp' onclick='sub2(this.id)'>P</th><th id='butc' onclick='sub2(this.id)'>C</th><th id='butb' onclick='sub2(this.id)'>B</th><th id='butbp' onclick='sub2(this.id)'>B+</th><th id='buta' onclick='sub2(this.id)'>A</th><th id='butap' onclick='sub2(this.id)'>A+</th><th id='buto' onclick='sub2(this.id)'>O</th><th id='butclose' onclick='buttonclose2()'></th></tr></table></div></th></tr><tr><th id='subname'>subjectname</th><th id='gradedisplay3'></th><th id='butopen' onclick='openbut3()'></th><th><div id='buttoncontainer3'><table id='buttons'><tr><th id='butp' onclick='sub3(this.id)'>P</th><th id='butc' onclick='sub3(this.id)'>C</th><th id='butb' onclick='sub3(this.id)'>B</th><th id='butbp' onclick='sub3(this.id)'>B+</th><th id='buta' onclick='sub3(this.id)'>A</th><th id='butap' onclick='sub3(this.id)'>A+</th><th id='buto' onclick='sub3(this.id)'>O</th><th id='butclose' onclick='buttonclose3()'></th></tr></table></div></th></tr><th id='subname'>subjectname</th><th id='gradedisplay4'></th><th id='butopen' onclick='openbut4()'></th><th><div id='buttoncontainer4'><table id='buttons'><tr><th id='butp' onclick='sub4(this.id)'>P</th><th id='butc' onclick='sub4(this.id)'>C</th><th id='butb' onclick='sub4(this.id)'>B</th><th id='butbp' onclick='sub4(this.id)'>B+</th><th id='buta' onclick='sub4(this.id)'>A</th><th id='butap' onclick='sub4(this.id)'>A+</th><th id='buto' onclick='sub4(this.id)'>O</th><th id='butclose' onclick='buttonclose4()'></th></tr></table></div></th></tr><th id='subname'>subjectname</th><th id='gradedisplay5'></th><th id='butopen' onclick='openbut5()'></th><th><div id='buttoncontainer5'><table id='buttons'><tr><th id='butp' onclick='sub5(this.id)'>P</th><th id='butc' onclick='sub5(this.id)'>C</th><th id='butb' onclick='sub5(this.id)'>B</th><th id='butbp' onclick='sub5(this.id)'>B+</th><th id='buta' onclick='sub5(this.id)'>A</th><th id='butap' onclick='sub5(this.id)'>A+</th><th id='buto' onclick='sub5(this.id)'>O</th><th id='butclose' onclick='buttonclose5()'></th></tr></table></div></th></tr><th id='subname'>subjectname</th><th id='gradedisplay6'></th><th id='butopen' onclick='openbut6()'></th><th><div id='buttoncontainer6'><table id='buttons'><tr><th id='butp' onclick='sub6(this.id)'>P</th><th id='butc' onclick='sub6(this.id)'>C</th><th id='butb' onclick='sub6(this.id)'>B</th><th id='butbp' onclick='sub6(this.id)'>B+</th><th id='buta' onclick='sub6(this.id)'>A</th><th id='butap' onclick='sub6(this.id)'>A+</th><th id='buto' onclick='sub6(this.id)'>O</th><th id='butclose' onclick='buttonclose6()'></th></tr></table></div></th></tr></table><table id='sgpasubmit'><tr><th onclick='sgpas2()'>SUBMIT</th><hr></tr></table>";}
+
+
+
+function s3cgpapage(){grade1=0;grade2=0;grade3=0;grade4=0;grade5=0;grade6=0;
+document.getElementById("cgtablecontainer1").innerHTML="<div id='cgtitle'>SGPA SEMESTER3</div><hr><div id='pagebackward' onclick='s2cgpapage()'>S2</div><div id='pageforward' onclick='s4cgpapage()'>S4</div><table id='cgtable'><tr><th id='subname'>subjectname</th><th id='gradedisplay1'></th><th id='butopen' onclick='openbut1()'></th><th><div id='buttoncontainer1'><table id='buttons'><tr><th id='butp' onclick='sub1(this.id)'>P</th><th id='butc' onclick='sub1(this.id)'>C</th><th id='butb' onclick='sub1(this.id)'>B</th><th id='butbp' onclick='sub1(this.id)'>B+</th><th id='buta'onclick='sub1(this.id)'>A</th><th id='butap' onclick='sub1(this.id)'>A+</th><th id='buto' onclick='sub1(this.id)'>O</th><th id='butclose' onclick='buttonclose1()'></th></tr></table></div></th></tr><tr><th id='subname'>subjectname</th><th id='gradedisplay2'></th><th id='butopen' onclick='openbut2()'></th><th><div id='buttoncontainer2'><table id='buttons'><tr><th id='butp' onclick='sub2(this.id)'>P</th><th id='butc' onclick='sub2(this.id)'>C</th><th id='butb' onclick='sub2(this.id)'>B</th><th id='butbp' onclick='sub2(this.id)'>B+</th><th id='buta' onclick='sub2(this.id)'>A</th><th id='butap' onclick='sub2(this.id)'>A+</th><th id='buto' onclick='sub2(this.id)'>O</th><th id='butclose' onclick='buttonclose2()'></th></tr></table></div></th></tr><tr><th id='subname'>subjectname</th><th id='gradedisplay3'></th><th id='butopen' onclick='openbut3()'></th><th><div id='buttoncontainer3'><table id='buttons'><tr><th id='butp' onclick='sub3(this.id)'>P</th><th id='butc' onclick='sub3(this.id)'>C</th><th id='butb' onclick='sub3(this.id)'>B</th><th id='butbp' onclick='sub3(this.id)'>B+</th><th id='buta' onclick='sub3(this.id)'>A</th><th id='butap' onclick='sub3(this.id)'>A+</th><th id='buto' onclick='sub3(this.id)'>O</th><th id='butclose' onclick='buttonclose3()'></th></tr></table></div></th></tr><th id='subname'>subjectname</th><th id='gradedisplay4'></th><th id='butopen' onclick='openbut4()'></th><th><div id='buttoncontainer4'><table id='buttons'><tr><th id='butp' onclick='sub4(this.id)'>P</th><th id='butc' onclick='sub4(this.id)'>C</th><th id='butb' onclick='sub4(this.id)'>B</th><th id='butbp' onclick='sub4(this.id)'>B+</th><th id='buta' onclick='sub4(this.id)'>A</th><th id='butap' onclick='sub4(this.id)'>A+</th><th id='buto' onclick='sub4(this.id)'>O</th><th id='butclose' onclick='buttonclose4()'></th></tr></table></div></th></tr><th id='subname'>subjectname</th><th id='gradedisplay5'></th><th id='butopen' onclick='openbut5()'></th><th><div id='buttoncontainer5'><table id='buttons'><tr><th id='butp' onclick='sub5(this.id)'>P</th><th id='butc' onclick='sub5(this.id)'>C</th><th id='butb' onclick='sub5(this.id)'>B</th><th id='butbp' onclick='sub5(this.id)'>B+</th><th id='buta' onclick='sub5(this.id)'>A</th><th id='butap' onclick='sub5(this.id)'>A+</th><th id='buto' onclick='sub5(this.id)'>O</th><th id='butclose' onclick='buttonclose5()'></th></tr></table></div></th></tr><th id='subname'>subjectname</th><th id='gradedisplay6'></th><th id='butopen' onclick='openbut6()'></th><th><div id='buttoncontainer6'><table id='buttons'><tr><th id='butp' onclick='sub6(this.id)'>P</th><th id='butc' onclick='sub6(this.id)'>C</th><th id='butb' onclick='sub6(this.id)'>B</th><th id='butbp' onclick='sub6(this.id)'>B+</th><th id='buta' onclick='sub6(this.id)'>A</th><th id='butap' onclick='sub6(this.id)'>A+</th><th id='buto' onclick='sub6(this.id)'>O</th><th id='butclose' onclick='buttonclose6()'></th></tr></table></div></th></tr></table><table id='sgpasubmit'><tr><th onclick='sgpas3()'>SUBMIT</th><hr></tr></table>";}
+
+
+function s4cgpapage(){grade1=0;grade2=0;grade3=0;grade4=0;grade5=0;grade6=0;
+document.getElementById("cgtablecontainer1").innerHTML="<div id='cgtitle'>SGPA SEMESTER4</div><hr><div id='pagebackward' onclick='s3cgpapage()'>S3</div> <div id='pageforward' onclick='s5cgpapage()'>S5</div><table id='cgtable'><tr><th id='subname'>subjectname</th><th id='gradedisplay1'></th><th id='butopen' onclick='openbut1()'></th><th><div id='buttoncontainer1'><table id='buttons'><tr><th id='butp' onclick='sub1(this.id)'>P</th><th id='butc' onclick='sub1(this.id)'>C</th><th id='butb' onclick='sub1(this.id)'>B</th><th id='butbp' onclick='sub1(this.id)'>B+</th><th id='buta'onclick='sub1(this.id)'>A</th><th id='butap' onclick='sub1(this.id)'>A+</th><th id='buto' onclick='sub1(this.id)'>O</th><th id='butclose' onclick='buttonclose1()'></th></tr></table></div></th></tr><tr><th id='subname'>subjectname</th><th id='gradedisplay2'></th><th id='butopen' onclick='openbut2()'></th><th><div id='buttoncontainer2'><table id='buttons'><tr><th id='butp' onclick='sub2(this.id)'>P</th><th id='butc' onclick='sub2(this.id)'>C</th><th id='butb' onclick='sub2(this.id)'>B</th><th id='butbp' onclick='sub2(this.id)'>B+</th><th id='buta' onclick='sub2(this.id)'>A</th><th id='butap' onclick='sub2(this.id)'>A+</th><th id='buto' onclick='sub2(this.id)'>O</th><th id='butclose' onclick='buttonclose2()'></th></tr></table></div></th></tr><tr><th id='subname'>subjectname</th><th id='gradedisplay3'></th><th id='butopen' onclick='openbut3()'></th><th><div id='buttoncontainer3'><table id='buttons'><tr><th id='butp' onclick='sub3(this.id)'>P</th><th id='butc' onclick='sub3(this.id)'>C</th><th id='butb' onclick='sub3(this.id)'>B</th><th id='butbp' onclick='sub3(this.id)'>B+</th><th id='buta' onclick='sub3(this.id)'>A</th><th id='butap' onclick='sub3(this.id)'>A+</th><th id='buto' onclick='sub3(this.id)'>O</th><th id='butclose' onclick='buttonclose3()'></th></tr></table></div></th></tr><th id='subname'>subjectname</th><th id='gradedisplay4'></th><th id='butopen' onclick='openbut4()'></th><th><div id='buttoncontainer4'><table id='buttons'><tr><th id='butp' onclick='sub4(this.id)'>P</th><th id='butc' onclick='sub4(this.id)'>C</th><th id='butb' onclick='sub4(this.id)'>B</th><th id='butbp' onclick='sub4(this.id)'>B+</th><th id='buta' onclick='sub4(this.id)'>A</th><th id='butap' onclick='sub4(this.id)'>A+</th><th id='buto' onclick='sub4(this.id)'>O</th><th id='butclose' onclick='buttonclose4()'></th></tr></table></div></th></tr><th id='subname'>subjectname</th><th id='gradedisplay5'></th><th id='butopen' onclick='openbut5()'></th><th><div id='buttoncontainer5'><table id='buttons'><tr><th id='butp' onclick='sub5(this.id)'>P</th><th id='butc' onclick='sub5(this.id)'>C</th><th id='butb' onclick='sub5(this.id)'>B</th><th id='butbp' onclick='sub5(this.id)'>B+</th><th id='buta' onclick='sub5(this.id)'>A</th><th id='butap' onclick='sub5(this.id)'>A+</th><th id='buto' onclick='sub5(this.id)'>O</th><th id='butclose' onclick='buttonclose5()'></th></tr></table></div></th></tr><th id='subname'>subjectname</th><th id='gradedisplay6'></th><th id='butopen' onclick='openbut6()'></th><th><div id='buttoncontainer6'><table id='buttons'><tr><th id='butp' onclick='sub6(this.id)'>P</th><th id='butc' onclick='sub6(this.id)'>C</th><th id='butb' onclick='sub6(this.id)'>B</th><th id='butbp' onclick='sub6(this.id)'>B+</th><th id='buta' onclick='sub6(this.id)'>A</th><th id='butap' onclick='sub6(this.id)'>A+</th><th id='buto' onclick='sub6(this.id)'>O</th><th id='butclose' onclick='buttonclose6()'></th></tr></table></div></th></tr></table><table id='sgpasubmit'><tr><th onclick='sgpas4()'>SUBMIT</th><hr></tr></table>";}
+
+
+function s5cgpapage(){grade1=0;grade2=0;grade3=0;grade4=0;grade5=0;grade6=0;
+document.getElementById("cgtablecontainer1").innerHTML="<div id='cgtitle'>SGPA SEMESTER5</div><hr><div id='pagebackward' onclick='s4cgpapage()'>S4</div> <div id='pageforward' onclick='s6cgpapage()'>S6</div><table id='cgtable'><tr><th id='subname'>subjectname</th><th id='gradedisplay1'></th><th id='butopen' onclick='openbut1()'></th><th><div id='buttoncontainer1'><table id='buttons'><tr><th id='butp' onclick='sub1(this.id)'>P</th><th id='butc' onclick='sub1(this.id)'>C</th><th id='butb' onclick='sub1(this.id)'>B</th><th id='butbp' onclick='sub1(this.id)'>B+</th><th id='buta'onclick='sub1(this.id)'>A</th><th id='butap' onclick='sub1(this.id)'>A+</th><th id='buto' onclick='sub1(this.id)'>O</th><th id='butclose' onclick='buttonclose1()'></th></tr></table></div></th></tr><tr><th id='subname'>subjectname</th><th id='gradedisplay2'></th><th id='butopen' onclick='openbut2()'></th><th><div id='buttoncontainer2'><table id='buttons'><tr><th id='butp' onclick='sub2(this.id)'>P</th><th id='butc' onclick='sub2(this.id)'>C</th><th id='butb' onclick='sub2(this.id)'>B</th><th id='butbp' onclick='sub2(this.id)'>B+</th><th id='buta' onclick='sub2(this.id)'>A</th><th id='butap' onclick='sub2(this.id)'>A+</th><th id='buto' onclick='sub2(this.id)'>O</th><th id='butclose' onclick='buttonclose2()'></th></tr></table></div></th></tr><tr><th id='subname'>subjectname</th><th id='gradedisplay3'></th><th id='butopen' onclick='openbut3()'></th><th><div id='buttoncontainer3'><table id='buttons'><tr><th id='butp' onclick='sub3(this.id)'>P</th><th id='butc' onclick='sub3(this.id)'>C</th><th id='butb' onclick='sub3(this.id)'>B</th><th id='butbp' onclick='sub3(this.id)'>B+</th><th id='buta' onclick='sub3(this.id)'>A</th><th id='butap' onclick='sub3(this.id)'>A+</th><th id='buto' onclick='sub3(this.id)'>O</th><th id='butclose' onclick='buttonclose3()'></th></tr></table></div></th></tr><th id='subname'>subjectname</th><th id='gradedisplay4'></th><th id='butopen' onclick='openbut4()'></th><th><div id='buttoncontainer4'><table id='buttons'><tr><th id='butp' onclick='sub4(this.id)'>P</th><th id='butc' onclick='sub4(this.id)'>C</th><th id='butb' onclick='sub4(this.id)'>B</th><th id='butbp' onclick='sub4(this.id)'>B+</th><th id='buta' onclick='sub4(this.id)'>A</th><th id='butap' onclick='sub4(this.id)'>A+</th><th id='buto' onclick='sub4(this.id)'>O</th><th id='butclose' onclick='buttonclose4()'></th></tr></table></div></th></tr><th id='subname'>subjectname</th><th id='gradedisplay5'></th><th id='butopen' onclick='openbut5()'></th><th><div id='buttoncontainer5'><table id='buttons'><tr><th id='butp' onclick='sub5(this.id)'>P</th><th id='butc' onclick='sub5(this.id)'>C</th><th id='butb' onclick='sub5(this.id)'>B</th><th id='butbp' onclick='sub5(this.id)'>B+</th><th id='buta' onclick='sub5(this.id)'>A</th><th id='butap' onclick='sub5(this.id)'>A+</th><th id='buto' onclick='sub5(this.id)'>O</th><th id='butclose' onclick='buttonclose5()'></th></tr></table></div></th></tr><th id='subname'>subjectname</th><th id='gradedisplay6'></th><th id='butopen' onclick='openbut6()'></th><th><div id='buttoncontainer6'><table id='buttons'><tr><th id='butp' onclick='sub6(this.id)'>P</th><th id='butc' onclick='sub6(this.id)'>C</th><th id='butb' onclick='sub6(this.id)'>B</th><th id='butbp' onclick='sub6(this.id)'>B+</th><th id='buta' onclick='sub6(this.id)'>A</th><th id='butap' onclick='sub6(this.id)'>A+</th><th id='buto' onclick='sub6(this.id)'>O</th><th id='butclose' onclick='buttonclose6()'></th></tr></table></div></th></tr></table><table id='sgpasubmit'><tr><th onclick='sgpas5()'>SUBMIT</th><hr></tr></table>";}
+
+
+function s6cgpapage(){grade1=0;grade2=0;grade3=0;grade4=0;grade5=0;grade6=0;
+document.getElementById("cgtablecontainer1").innerHTML="<div id='cgtitle'>SGPA SEMESTER6</div><hr><div id='pagebackward' onclick='s5cgpapage()'>S5</div><div id='pageforward' onclick='s7cgpapage()'>S7</div><table id='cgtable'><tr><th id='subname'>subjectname</th><th id='gradedisplay1'></th><th id='butopen' onclick='openbut1()'></th><th><div id='buttoncontainer1'><table id='buttons'><tr><th id='butp' onclick='sub1(this.id)'>P</th><th id='butc' onclick='sub1(this.id)'>C</th><th id='butb' onclick='sub1(this.id)'>B</th><th id='butbp' onclick='sub1(this.id)'>B+</th><th id='buta'onclick='sub1(this.id)'>A</th><th id='butap' onclick='sub1(this.id)'>A+</th><th id='buto' onclick='sub1(this.id)'>O</th><th id='butclose' onclick='buttonclose1()'></th></tr></table></div></th></tr><tr><th id='subname'>subjectname</th><th id='gradedisplay2'></th><th id='butopen' onclick='openbut2()'></th><th><div id='buttoncontainer2'><table id='buttons'><tr><th id='butp' onclick='sub2(this.id)'>P</th><th id='butc' onclick='sub2(this.id)'>C</th><th id='butb' onclick='sub2(this.id)'>B</th><th id='butbp' onclick='sub2(this.id)'>B+</th><th id='buta' onclick='sub2(this.id)'>A</th><th id='butap' onclick='sub2(this.id)'>A+</th><th id='buto' onclick='sub2(this.id)'>O</th><th id='butclose' onclick='buttonclose2()'></th></tr></table></div></th></tr><tr><th id='subname'>subjectname</th><th id='gradedisplay3'></th><th id='butopen' onclick='openbut3()'></th><th><div id='buttoncontainer3'><table id='buttons'><tr><th id='butp' onclick='sub3(this.id)'>P</th><th id='butc' onclick='sub3(this.id)'>C</th><th id='butb' onclick='sub3(this.id)'>B</th><th id='butbp' onclick='sub3(this.id)'>B+</th><th id='buta' onclick='sub3(this.id)'>A</th><th id='butap' onclick='sub3(this.id)'>A+</th><th id='buto' onclick='sub3(this.id)'>O</th><th id='butclose' onclick='buttonclose3()'></th></tr></table></div></th></tr><th id='subname'>subjectname</th><th id='gradedisplay4'></th><th id='butopen' onclick='openbut4()'></th><th><div id='buttoncontainer4'><table id='buttons'><tr><th id='butp' onclick='sub4(this.id)'>P</th><th id='butc' onclick='sub4(this.id)'>C</th><th id='butb' onclick='sub4(this.id)'>B</th><th id='butbp' onclick='sub4(this.id)'>B+</th><th id='buta' onclick='sub4(this.id)'>A</th><th id='butap' onclick='sub4(this.id)'>A+</th><th id='buto' onclick='sub4(this.id)'>O</th><th id='butclose' onclick='buttonclose4()'></th></tr></table></div></th></tr><th id='subname'>subjectname</th><th id='gradedisplay5'></th><th id='butopen' onclick='openbut5()'></th><th><div id='buttoncontainer5'><table id='buttons'><tr><th id='butp' onclick='sub5(this.id)'>P</th><th id='butc' onclick='sub5(this.id)'>C</th><th id='butb' onclick='sub5(this.id)'>B</th><th id='butbp' onclick='sub5(this.id)'>B+</th><th id='buta' onclick='sub5(this.id)'>A</th><th id='butap' onclick='sub5(this.id)'>A+</th><th id='buto' onclick='sub5(this.id)'>O</th><th id='butclose' onclick='buttonclose5()'></th></tr></table></div></th></tr><th id='subname'>subjectname</th><th id='gradedisplay6'></th><th id='butopen' onclick='openbut6()'></th><th><div id='buttoncontainer6'><table id='buttons'><tr><th id='butp' onclick='sub6(this.id)'>P</th><th id='butc' onclick='sub6(this.id)'>C</th><th id='butb' onclick='sub6(this.id)'>B</th><th id='butbp' onclick='sub6(this.id)'>B+</th><th id='buta' onclick='sub6(this.id)'>A</th><th id='butap' onclick='sub6(this.id)'>A+</th><th id='buto' onclick='sub6(this.id)'>O</th><th id='butclose' onclick='buttonclose6()'></th></tr></table></div></th></tr></table><table id='sgpasubmit'><tr><th onclick='sgpas6()'>SUBMIT</th><hr></tr></table>";}
+
+function s7cgpapage(){grade1=0;grade2=0;grade3=0;grade4=0;grade5=0;grade6=0;
+document.getElementById("cgtablecontainer1").innerHTML="<div id='cgtitle'>SGPA SEMESTER7</div><hr><div id='pagebackward' onclick='s6cgpapage()'>S6</div><div id='pageforward' onclick='s8cgpapage()'>S8</div><table id='cgtable'><tr><th id='subname'>subjectname</th><th id='gradedisplay1'></th><th id='butopen' onclick='openbut1()'></th><th><div id='buttoncontainer1'><table id='buttons'><tr><th id='butp' onclick='sub1(this.id)'>P</th><th id='butc' onclick='sub1(this.id)'>C</th><th id='butb' onclick='sub1(this.id)'>B</th><th id='butbp' onclick='sub1(this.id)'>B+</th><th id='buta'onclick='sub1(this.id)'>A</th><th id='butap' onclick='sub1(this.id)'>A+</th><th id='buto' onclick='sub1(this.id)'>O</th><th id='butclose' onclick='buttonclose1()'></th></tr></table></div></th></tr><tr><th id='subname'>subjectname</th><th id='gradedisplay2'></th><th id='butopen' onclick='openbut2()'></th><th><div id='buttoncontainer2'><table id='buttons'><tr><th id='butp' onclick='sub2(this.id)'>P</th><th id='butc' onclick='sub2(this.id)'>C</th><th id='butb' onclick='sub2(this.id)'>B</th><th id='butbp' onclick='sub2(this.id)'>B+</th><th id='buta' onclick='sub2(this.id)'>A</th><th id='butap' onclick='sub2(this.id)'>A+</th><th id='buto' onclick='sub2(this.id)'>O</th><th id='butclose' onclick='buttonclose2()'></th></tr></table></div></th></tr><tr><th id='subname'>subjectname</th><th id='gradedisplay3'></th><th id='butopen' onclick='openbut3()'></th><th><div id='buttoncontainer3'><table id='buttons'><tr><th id='butp' onclick='sub3(this.id)'>P</th><th id='butc' onclick='sub3(this.id)'>C</th><th id='butb' onclick='sub3(this.id)'>B</th><th id='butbp' onclick='sub3(this.id)'>B+</th><th id='buta' onclick='sub3(this.id)'>A</th><th id='butap' onclick='sub3(this.id)'>A+</th><th id='buto' onclick='sub3(this.id)'>O</th><th id='butclose' onclick='buttonclose3()'></th></tr></table></div></th></tr><th id='subname'>subjectname</th><th id='gradedisplay4'></th><th id='butopen' onclick='openbut4()'></th><th><div id='buttoncontainer4'><table id='buttons'><tr><th id='butp' onclick='sub4(this.id)'>P</th><th id='butc' onclick='sub4(this.id)'>C</th><th id='butb' onclick='sub4(this.id)'>B</th><th id='butbp' onclick='sub4(this.id)'>B+</th><th id='buta' onclick='sub4(this.id)'>A</th><th id='butap' onclick='sub4(this.id)'>A+</th><th id='buto' onclick='sub4(this.id)'>O</th><th id='butclose' onclick='buttonclose4()'></th></tr></table></div></th></tr><th id='subname'>subjectname</th><th id='gradedisplay5'></th><th id='butopen' onclick='openbut5()'></th><th><div id='buttoncontainer5'><table id='buttons'><tr><th id='butp' onclick='sub5(this.id)'>P</th><th id='butc' onclick='sub5(this.id)'>C</th><th id='butb' onclick='sub5(this.id)'>B</th><th id='butbp' onclick='sub5(this.id)'>B+</th><th id='buta' onclick='sub5(this.id)'>A</th><th id='butap' onclick='sub5(this.id)'>A+</th><th id='buto' onclick='sub5(this.id)'>O</th><th id='butclose' onclick='buttonclose5()'></th></tr></table></div></th></tr><th id='subname'>subjectname</th><th id='gradedisplay6'></th><th id='butopen' onclick='openbut6()'></th><th><div id='buttoncontainer6'><table id='buttons'><tr><th id='butp' onclick='sub6(this.id)'>P</th><th id='butc' onclick='sub6(this.id)'>C</th><th id='butb' onclick='sub6(this.id)'>B</th><th id='butbp' onclick='sub6(this.id)'>B+</th><th id='buta' onclick='sub6(this.id)'>A</th><th id='butap' onclick='sub6(this.id)'>A+</th><th id='buto' onclick='sub6(this.id)'>O</th><th id='butclose' onclick='buttonclose6()'></th></tr></table></div></th></tr></table><table id='sgpasubmit'><tr><th onclick='sgpas7()'>SUBMIT</th><hr></tr></table>";}
+
+
+function s8cgpapage(){grade1=0;grade2=0;grade3=0;grade4=0;grade5=0;grade6=0;
+document.getElementById("cgtablecontainer1").innerHTML="<div id='cgtitle'>SGPA SEMESTER8</div><hr><div id='pagebackward' onclick='s7cgpapage()'>S7</div><table id='cgtable'><tr><th id='subname'>subjectname</th><th id='gradedisplay1'></th><th id='butopen' onclick='openbut1()'></th><th><div id='buttoncontainer1'><table id='buttons'><tr><th id='butp' onclick='sub1(this.id)'>P</th><th id='butc' onclick='sub1(this.id)'>C</th><th id='butb' onclick='sub1(this.id)'>B</th><th id='butbp' onclick='sub1(this.id)'>B+</th><th id='buta'onclick='sub1(this.id)'>A</th><th id='butap' onclick='sub1(this.id)'>A+</th><th id='buto' onclick='sub1(this.id)'>O</th><th id='butclose' onclick='buttonclose1()'></th></tr></table></div></th></tr><tr><th id='subname'>subjectname</th><th id='gradedisplay2'></th><th id='butopen' onclick='openbut2()'></th><th><div id='buttoncontainer2'><table id='buttons'><tr><th id='butp' onclick='sub2(this.id)'>P</th><th id='butc' onclick='sub2(this.id)'>C</th><th id='butb' onclick='sub2(this.id)'>B</th><th id='butbp' onclick='sub2(this.id)'>B+</th><th id='buta' onclick='sub2(this.id)'>A</th><th id='butap' onclick='sub2(this.id)'>A+</th><th id='buto' onclick='sub2(this.id)'>O</th><th id='butclose' onclick='buttonclose2()'></th></tr></table></div></th></tr><tr><th id='subname'>subjectname</th><th id='gradedisplay3'></th><th id='butopen' onclick='openbut3()'></th><th><div id='buttoncontainer3'><table id='buttons'><tr><th id='butp' onclick='sub3(this.id)'>P</th><th id='butc' onclick='sub3(this.id)'>C</th><th id='butb' onclick='sub3(this.id)'>B</th><th id='butbp' onclick='sub3(this.id)'>B+</th><th id='buta' onclick='sub3(this.id)'>A</th><th id='butap' onclick='sub3(this.id)'>A+</th><th id='buto' onclick='sub3(this.id)'>O</th><th id='butclose' onclick='buttonclose3()'></th></tr></table></div></th></tr><th id='subname'>subjectname</th><th id='gradedisplay4'></th><th id='butopen' onclick='openbut4()'></th><th><div id='buttoncontainer4'><table id='buttons'><tr><th id='butp' onclick='sub4(this.id)'>P</th><th id='butc' onclick='sub4(this.id)'>C</th><th id='butb' onclick='sub4(this.id)'>B</th><th id='butbp' onclick='sub4(this.id)'>B+</th><th id='buta' onclick='sub4(this.id)'>A</th><th id='butap' onclick='sub4(this.id)'>A+</th><th id='buto' onclick='sub4(this.id)'>O</th><th id='butclose' onclick='buttonclose4()'></th></tr></table></div></th></tr><th id='subname'>subjectname</th><th id='gradedisplay5'></th><th id='butopen' onclick='openbut5()'></th><th><div id='buttoncontainer5'><table id='buttons'><tr><th id='butp' onclick='sub5(this.id)'>P</th><th id='butc' onclick='sub5(this.id)'>C</th><th id='butb' onclick='sub5(this.id)'>B</th><th id='butbp' onclick='sub5(this.id)'>B+</th><th id='buta' onclick='sub5(this.id)'>A</th><th id='butap' onclick='sub5(this.id)'>A+</th><th id='buto' onclick='sub5(this.id)'>O</th><th id='butclose' onclick='buttonclose5()'></th></tr></table></div></th></tr><th id='subname'>subjectname</th><th id='gradedisplay6'></th><th id='butopen' onclick='openbut6()'></th><th><div id='buttoncontainer6'><table id='buttons'><tr><th id='butp' onclick='sub6(this.id)'>P</th><th id='butc' onclick='sub6(this.id)'>C</th><th id='butb' onclick='sub6(this.id)'>B</th><th id='butbp' onclick='sub6(this.id)'>B+</th><th id='buta' onclick='sub6(this.id)'>A</th><th id='butap' onclick='sub6(this.id)'>A+</th><th id='buto' onclick='sub6(this.id)'>O</th><th id='butclose' onclick='buttonclose6()'></th></tr></table></div></th></tr></table><table id='sgpasubmit'><tr><th onclick='sgpas8()'>SUBMIT</th><hr></tr></table>";}
+
+
+function openbut1()
+{document.getElementById('buttoncontainer1').style.width="300px";
+document.getElementById('buttoncontainer2').style.width="0px";
+document.getElementById('buttoncontainer3').style.width="0px";
+document.getElementById('buttoncontainer4').style.width="0px";
+document.getElementById('buttoncontainer5').style.width="0px";
+document.getElementById('buttoncontainer6').style.width="0px";}
+
+function buttonclose1()
+{document.getElementById('buttoncontainer1').style.width="0px";}
+
+
+function openbut2()
+{document.getElementById('buttoncontainer2').style.width="300px";
+document.getElementById('buttoncontainer1').style.width="0px";
+document.getElementById('buttoncontainer3').style.width="0px";
+document.getElementById('buttoncontainer4').style.width="0px";
+document.getElementById('buttoncontainer5').style.width="0px";
+document.getElementById('buttoncontainer6').style.width="0px";}
+
+function buttonclose2()
+{document.getElementById('buttoncontainer2').style.width="0px";}
+
+
+function openbut3()
+{document.getElementById('buttoncontainer3').style.width="300px";
+document.getElementById('buttoncontainer1').style.width="0px";
+document.getElementById('buttoncontainer2').style.width="0px";
+document.getElementById('buttoncontainer4').style.width="0px";
+document.getElementById('buttoncontainer5').style.width="0px";
+document.getElementById('buttoncontainer6').style.width="0px";
+}
+
+
+function buttonclose3()
+{document.getElementById('buttoncontainer3').style.width="0px";}
+
+
+function openbut4()
+{document.getElementById('buttoncontainer4').style.width="300px";
+document.getElementById('buttoncontainer1').style.width="0px";
+document.getElementById('buttoncontainer2').style.width="0px";
+document.getElementById('buttoncontainer3').style.width="0px";
+document.getElementById('buttoncontainer5').style.width="0px";
+document.getElementById('buttoncontainer6').style.width="0px";
+}
+function buttonclose4()
+{document.getElementById('buttoncontainer4').style.width="0px";}
+
+function openbut5()
+{document.getElementById('buttoncontainer5').style.width="300px";
+document.getElementById('buttoncontainer1').style.width="0px";
+document.getElementById('buttoncontainer2').style.width="0px";
+document.getElementById('buttoncontainer3').style.width="0px";
+document.getElementById('buttoncontainer4').style.width="0px";
+document.getElementById('buttoncontainer6').style.width="0px";
+}
+function buttonclose5()
+
+{document.getElementById('buttoncontainer5').style.width="0px";}
+
+function openbut6()
+{document.getElementById('buttoncontainer6').style.width="300px";
+document.getElementById('buttoncontainer1').style.width="0px";
+document.getElementById('buttoncontainer2').style.width="0px";
+document.getElementById('buttoncontainer3').style.width="0px";
+document.getElementById('buttoncontainer4').style.width="0px";
+document.getElementById('buttoncontainer5').style.width="0px";
+}
+
+function buttonclose6()
+{document.getElementById('buttoncontainer6').style.width="0px";}
+
+
+
+function sub1(thid)
+{
+grade1=0
+if(thid=="butp"){grade1=5;x="P";}
+else if(thid=="butc"){grade1=6;x="C";}
+else if(thid=="butb"){grade1=7;x="B";}
+else if(thid=="butbp"){grade1=8;x="B+";;}
+else if(thid=="buta"){grade1=8.5;x="A";}
+else if(thid=="butap"){grade1=9;x="A+";}
+else if(thid=="buto"){grade1=10;x="O";}
+else {grade1==0;}
+document.getElementById("gradedisplay1").innerHTML=x;
+}
+
+function sub2(thid)
+{
+grade2=0;
+if(thid=="butp"){grade2=5;x="P";}
+else if(thid=="butc"){grade2=6;x="C";}
+else if(thid=="butb"){grade2=7;x="B";}
+else if(thid=="butbp"){grade2=8;x="B+";;}
+else if(thid=="buta"){grade2=8.5;x="A";}
+else if(thid=="butap"){grade2=9;x="A+";}
+else if(thid=="buto"){grade2=10;x="O";}
+else {grade2==0;}
+document.getElementById("gradedisplay2").innerHTML=x;
+}
+
+function sub3(thid)
+{
+grade3=0;
+if(thid=="butp"){grade3=5;x="P";}
+else if(thid=="butc"){grade3=6;x="C";}
+else if(thid=="butb"){grade3=7;x="B";}
+else if(thid=="butbp"){grade3=8;x="B+";;}
+else if(thid=="buta"){grade3=8.5;x="A";}
+else if(thid=="butap"){grade3=9;x="A+";}
+else if(thid=="buto"){grade3=10;x="O";}
+else {grade3==0;}
+document.getElementById("gradedisplay3").innerHTML=x;
+}
+
+
+function sub4(thid)
+{
+grade4=0;
+if(thid=="butp"){grade4=5;x="P";}
+else if(thid=="butc"){grade4=6;x="C";}
+else if(thid=="butb"){grade4=7;x="B";}
+else if(thid=="butbp"){grade4=8;x="B+";;}
+else if(thid=="buta"){grade4=8.5;x="A";}
+else if(thid=="butap"){grade4=9;x="A+";}
+else if(thid=="buto"){grade4=10;x="O";}
+else {grade4==0;}
+document.getElementById("gradedisplay4").innerHTML=x;
+}
+
+
+function sub5(thid)
+{
+grade5=0;
+if(thid=="butp"){grade5=5;x="P";}
+else if(thid=="butc"){grade5=6;x="C";}
+else if(thid=="butb"){grade5=7;x="B";}
+else if(thid=="butbp"){grade5=8;x="B+";;}
+else if(thid=="buta"){grade5=8.5;x="A";}
+else if(thid=="butap"){grade5=9;x="A+";}
+else if(thid=="buto"){grade5=10;x="O";}
+else {grade5==0;}
+document.getElementById("gradedisplay5").innerHTML=x;
+}
+
+
+function sub6(thid)
+{
+grade6=0;
+if(thid=="butp"){grade6=5;x="P";}
+else if(thid=="butc"){grade6=6;x="C";}
+else if(thid=="butb"){grade6=7;x="B";}
+else if(thid=="butbp"){grade6=8;x="B+";;}
+else if(thid=="buta"){grade6=8.5;x="A";}
+else if(thid=="butap"){grade6=9;x="A+";}
+else if(thid=="buto"){grade6=10;x="O";}
+else {grade6==0;}
+document.getElementById("gradedisplay6").innerHTML=x;
+}
+function sgpas1(){sgpsemr1=0;
+if(grade1>0 && grade2>0 && grade3>0 && grade4>0 && grade5>0 && grade6>0) {sgpsemr1=((grade1*4)+(grade2*4)+(grade3*3)+(grade4*3)+(grade5*3)+(grade6*1))/(18);grade1=0;grade2=0;grade3=0;grade4=0;grade5=0;grade6=0;document.getElementById("gradedisplay1").innerHTML="";document.getElementById("gradedisplay2").innerHTML="";document.getElementById("gradedisplay3").innerHTML="";document.getElementById("gradedisplay4").innerHTML="";document.getElementById("gradedisplay5").innerHTML="";document.getElementById("gradedisplay6").innerHTML="";document.getElementById("sem1result").innerHTML='SGPA SEM1:'+sgpsemr1.toFixed(2);if(sgpsemr1>0 && sgpsemr2>0 && sgpsemr3>0 && sgpsemr4>0 && sgpsemr5>0 && sgpsemr6>0 && sgpsemr7>0 && sgpsemr8>0){cgpafull();};}
+
+else{alert("Please select grades for all subjects first");};
+
+}
+function sgpas2(){sgpsemr2=0;if(grade1>0 && grade2>0 && grade3>0 && grade4>0 && grade5>0 && grade6>0) {sgpsemr2=((grade1*4)+(grade2*4)+(grade3*3)+(grade4*3)+(grade5*3)+(grade6*1))/(18);grade1=0;grade2=0;grade3=0;grade4=0;grade5=0;grade6=0;document.getElementById("gradedisplay1").innerHTML="";document.getElementById("gradedisplay2").innerHTML="";document.getElementById("gradedisplay3").innerHTML="";document.getElementById("gradedisplay4").innerHTML="";document.getElementById("gradedisplay5").innerHTML="";document.getElementById("gradedisplay6").innerHTML="";document.getElementById("sem2result").innerHTML='SGPA SEM2:'+sgpsemr2.toFixed(2);if(sgpsemr1>0 && sgpsemr2>0 && sgpsemr3>0 && sgpsemr4>0 && sgpsemr5>0 && sgpsemr6>0 && sgpsemr7>0 && sgpsemr8>0){cgpafull();};}
+
+else{alert("Please select grades for all subjects first");};}
+
+function sgpas3(){sgpsemr3=0;if(grade1>0 && grade2>0 && grade3>0 && grade4>0 && grade5>0 && grade6>0){ sgpsemr3=((grade1*4)+(grade2*4)+(grade3*3)+(grade4*3)+(grade5*3)+(grade6*1))/(18);grade1=0;grade2=0;grade3=0;grade4=0;grade5=0;grade6=0;document.getElementById("gradedisplay1").innerHTML="";document.getElementById("gradedisplay2").innerHTML="";document.getElementById("gradedisplay3").innerHTML="";document.getElementById("gradedisplay4").innerHTML="";document.getElementById("gradedisplay5").innerHTML="";document.getElementById("gradedisplay6").innerHTML="";document.getElementById("sem3result").innerHTML='SGPA SEM3:'+sgpsemr3.toFixed(2);if(sgpsemr1>0 && sgpsemr2>0 && sgpsemr3>0 && sgpsemr4>0 && sgpsemr5>0 && sgpsemr6>0 && sgpsemr7>0 && sgpsemr8>0){cgpafull();};}
+else{alert("Please select grades for all subjects first");};}
+
+function sgpas4(){sgpsemr4=0;if(grade1>0 && grade2>0 && grade3>0 && grade4>0 && grade5>0 && grade6>0) {  sgpsemr4=((grade1*4)+(grade2*4)+(grade3*3)+(grade4*3)+(grade5*3)+(grade6*1))/(18);grade1=0;grade2=0;grade3=0;grade4=0;grade5=0;grade6=0;document.getElementById("gradedisplay1").innerHTML="";document.getElementById("gradedisplay2").innerHTML="";document.getElementById("gradedisplay3").innerHTML="";document.getElementById("gradedisplay4").innerHTML="";document.getElementById("gradedisplay5").innerHTML="";document.getElementById("gradedisplay6").innerHTML="";document.getElementById("sem4result").innerHTML='SGPA SEM1:'+sgpsemr4.toFixed(2);if(sgpsemr1>0 && sgpsemr2>0 && sgpsemr3>0 && sgpsemr4>0 && sgpsemr5>0 && sgpsemr6>0 && sgpsemr7>0 && sgpsemr8>0){cgpafull();};}
+else{alert("Please select grades for all subjects first");};}
+
+function sgpas5(){sgpsemr5=0;if(grade1>0 && grade2>0 && grade3>0 && grade4>0 && grade5>0 && grade6>0) { sgpsemr5=((grade1*4)+(grade2*4)+(grade3*3)+(grade4*3)+(grade5*3)+(grade6*1))/(18);grade1=0;grade2=0;grade3=0;grade4=0;grade5=0;grade6=0;document.getElementById("gradedisplay1").innerHTML="";document.getElementById("gradedisplay2").innerHTML="";document.getElementById("gradedisplay3").innerHTML="";document.getElementById("gradedisplay4").innerHTML="";document.getElementById("gradedisplay5").innerHTML="";document.getElementById("gradedisplay6").innerHTML="";document.getElementById("sem5result").innerHTML='SGPA SEM5:'+sgpsemr5.toFixed(2);if(sgpsemr1>0 && sgpsemr2>0 && sgpsemr3>0 && sgpsemr4>0 && sgpsemr5>0 && sgpsemr6>0 && sgpsemr7>0 && sgpsemr8>0){cgpafull();};}
+else{alert("Please select grades for all subjects first");};}
+function sgpas6(){sgpsemr6=0;if(grade1>0 && grade2>0 && grade3>0 && grade4>0 && grade5>0 && grade6>0) { sgpsemr6=((grade1*4)+(grade2*4)+(grade3*3)+(grade4*3)+(grade5*3)+(grade6*1))/(18);grade1=0;grade2=0;grade3=0;grade4=0;grade5=0;grade6=0;document.getElementById("gradedisplay1").innerHTML="";document.getElementById("gradedisplay2").innerHTML="";document.getElementById("gradedisplay3").innerHTML="";document.getElementById("gradedisplay4").innerHTML="";document.getElementById("gradedisplay5").innerHTML="";document.getElementById("gradedisplay6").innerHTML="";document.getElementById("sem6result").innerHTML='SGPA SEM6:'+sgpsemr6.toFixed(2);if(sgpsemr1>0 && sgpsemr2>0 && sgpsemr3>0 && sgpsemr4>0 && sgpsemr5>0 && sgpsemr6>0 && sgpsemr7>0 && sgpsemr8>0){cgpafull();};}
+else{alert("Please select grades for all subjects first");};}
+function sgpas7(){sgpsemr7=0;if(grade1>0 && grade2>0 && grade3>0 && grade4>0 && grade5>0 && grade6>0) {  sgpsemr7=((grade1*4)+(grade2*4)+(grade3*3)+(grade4*3)+(grade5*3)+(grade6*1))/(18);grade1=0;grade2=0;grade3=0;grade4=0;grade5=0;grade6=0;document.getElementById("gradedisplay1").innerHTML="";document.getElementById("gradedisplay2").innerHTML="";document.getElementById("gradedisplay3").innerHTML="";document.getElementById("gradedisplay4").innerHTML="";document.getElementById("gradedisplay5").innerHTML="";document.getElementById("gradedisplay6").innerHTML="";document.getElementById("sem7result").innerHTML='SGPA SEM7:'+sgpsemr7.toFixed(2);if(sgpsemr1>0 && sgpsemr2>0 && sgpsemr3>0 && sgpsemr4>0 && sgpsemr5>0 && sgpsemr6>0 && sgpsemr7>0 && sgpsemr8>0){cgpafull();};}
+else{alert("Please select grades for all subjects first");};}
+function sgpas8(){sgpsemr8=0;if(grade1>0 && grade2>0 && grade3>0 && grade4>0 && grade5>0 && grade6>0) {  sgpsemr8=((grade1*4)+(grade2*4)+(grade3*3)+(grade4*3)+(grade5*3)+(grade6*1))/(18);grade1=0;grade2=0;grade3=0;grade4=0;grade5=0;grade6=0;document.getElementById("gradedisplay1").innerHTML="";document.getElementById("gradedisplay2").innerHTML="";document.getElementById("gradedisplay3").innerHTML="";document.getElementById("gradedisplay4").innerHTML="";document.getElementById("gradedisplay5").innerHTML="";document.getElementById("gradedisplay6").innerHTML="";document.getElementById("sem8result").innerHTML='SGPA SEM8:'+sgpsemr8.toFixed(2);if(sgpsemr1>0 && sgpsemr2>0 && sgpsemr3>0 && sgpsemr4>0 && sgpsemr5>0 && sgpsemr6>0 && sgpsemr7>0 && sgpsemr8>0){cgpafull();};}
+else{alert("Please select grades for all subjects first");};}
+function cgpafull(){cgpaall=((sgpsemr1+sgpsemr2+sgpsemr3+sgpsemr4+sgpsemr5+sgpsemr6+sgpsemr7+sgpsemr8)/(8));document.getElementById("cgtablecontainer1").innerHTML="YOUR CGPA="+cgpaall.toFixed(2);}
+
+
+
+</script>
+
+
+</div>
+</body>
+</html>
